@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>She Can Foundation – Empowering Women, Transforming Lives</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose:    #C2185B;
+    --rose-light: #F06292;
+    --rose-pale: #FCE4EC;
+    --gold:    #B8860B;
+    --cream:   #FDF8F2;
+    --charcoal:#1A1A1A;
+    --mid:     #5A5A5A;
+    --light:   #F9F1E8;
+    --white:   #FFFFFF;
+    --shadow:  rgba(194,24,91,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(253,248,242,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(194,24,91,0.12);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    box-shadow: 0 4px 30px var(--shadow);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: #fff; font-weight: 600;
+    box-shadow: 0 4px 14px var(--shadow);
+  }
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--rose);
+    letter-spacing: 0.02em; line-height: 1.1;
+  }
+  .nav-logo-text span { display: block; font-size: 0.65rem; font-family: 'DM Sans', sans-serif; color: var(--mid); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .nav-links {
+    list-style: none; display: flex; gap: 36px; align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--charcoal); font-size: 0.88rem;
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    position: relative; padding-bottom: 3px;
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px;
+    background: var(--rose); transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--rose); color: #fff !important;
+    padding: 9px 22px; border-radius: 30px;
+    transition: background 0.3s, transform 0.2s !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: #a3154e !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -20%; right: -10%;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(194,24,91,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -15%; left: -5%;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,134,11,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-text { position: relative; z-index: 2; animation: fadeUp 1s ease both; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--rose);
+    background: var(--rose-pale); padding: 7px 16px; border-radius: 30px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before { content: '♀'; font-size: 1rem; }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 300;
+    color: var(--charcoal);
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem; line-height: 1.75; color: var(--mid);
+    max-width: 480px; margin-bottom: 44px; font-weight: 300;
+  }
+
+  .hero-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: linear-gradient(135deg, var(--rose) 0%, #e91e8c 100%);
+    color: #fff; text-decoration: none;
+    padding: 16px 36px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    box-shadow: 0 8px 30px rgba(194,24,91,0.4);
+    transition: transform 0.25s, box-shadow 0.25s;
+    border: none; cursor: pointer;
+  }
+  .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(194,24,91,0.5); }
+  .hero-btn svg { width: 18px; height: 18px; transition: transform 0.25s; }
+  .hero-btn:hover svg { transform: translateX(4px); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px; padding-top: 40px;
+    border-top: 1px solid rgba(194,24,91,0.15);
+  }
+  .stat-item { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 600; color: var(--rose); line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--mid); margin-top: 4px; letter-spacing: 0.05em; }
+
+  /* Hero Image */
+  .hero-visual {
+    position: relative; z-index: 2;
+    display: flex; justify-content: center; align-items: center;
+    animation: fadeUp 1.2s ease 0.2s both;
+  }
+  .hero-img-wrap {
+    position: relative; width: 90%; max-width: 480px;
+  }
+  .hero-img-wrap img {
+    width: 100%; height: 520px; object-fit: cover;
+    border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%;
+    display: block;
+    box-shadow: 0 30px 80px rgba(194,24,91,0.25);
+    filter: saturate(1.05);
+  }
+  .hero-img-badge {
+    position: absolute; bottom: 40px; left: -24px;
+    background: #fff; border-radius: 16px; padding: 16px 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    display: flex; align-items: center; gap: 12px;
+    animation: floatBadge 4s ease-in-out infinite;
+  }
+  .badge-icon {
+    width: 44px; height: 44px; background: var(--rose-pale);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .badge-text strong { display: block; font-size: 0.9rem; color: var(--charcoal); }
+  .badge-text span { font-size: 0.72rem; color: var(--mid); }
+
+  .hero-ring {
+    position: absolute; top: -20px; right: -20px;
+    width: 120px; height: 120px; border-radius: 50%;
+    border: 2px dashed rgba(194,24,91,0.3);
+    animation: spin 20s linear infinite;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 100px 5%; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rose); font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+    font-weight: 300; line-height: 1.2; color: var(--charcoal);
+  }
+  .section-heading em { font-style: italic; color: var(--rose); }
+  .section-sub {
+    font-size: 1rem; color: var(--mid); line-height: 1.8;
+    max-width: 580px; margin-top: 16px; font-weight: 300;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--rose-light));
+    border-radius: 2px; margin: 24px 0 40px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-content {}
+
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
+  .feature-card {
+    background: #fff; border-radius: 16px; padding: 22px 20px;
+    border: 1px solid rgba(194,24,91,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px var(--shadow); }
+  .feature-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .feature-card h4 { font-size: 0.92rem; font-weight: 600; color: var(--charcoal); margin-bottom: 6px; }
+  .feature-card p { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+
+  .about-visual { position: relative; }
+  .about-img {
+    width: 100%; height: 480px; object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.14);
+  }
+  .about-quote {
+    position: absolute; bottom: -30px; right: -20px;
+    background: var(--rose); color: #fff;
+    padding: 24px 28px; border-radius: 16px; max-width: 240px;
+    box-shadow: 0 12px 36px rgba(194,24,91,0.4);
+  }
+  .about-quote blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; line-height: 1.5; }
+  .about-quote cite { display: block; font-size: 0.72rem; margin-top: 8px; opacity: 0.8; letter-spacing: 0.05em; }
+
+  /* ── MISSION ── */
+  #mission { background: var(--charcoal); color: #fff; }
+  #mission .section-heading { color: #fff; }
+  #mission .section-tag { color: var(--rose-light); }
+  #mission .section-sub { color: rgba(255,255,255,0.65); }
+  #mission .divider { background: linear-gradient(90deg, var(--rose-light), var(--rose)); }
+
+  .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 60px; }
+  .mission-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; padding: 36px 28px;
+    transition: background 0.3s, transform 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .mission-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--rose-light));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .mission-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-6px); }
+  .mission-card:hover::before { transform: scaleX(1); }
+  .mission-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: rgba(194,24,91,0.3); line-height: 1; margin-bottom: 16px;
+  }
+  .mission-card h3 { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 12px; }
+  .mission-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.75; }
+
+  /* ── GOALS ── */
+  #goals { background: var(--cream); }
+  .goals-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .goals-list { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+  .goal-item {
+    display: flex; gap: 18px; align-items: flex-start;
+    background: #fff; padding: 22px 24px; border-radius: 16px;
+    border: 1px solid rgba(194,24,91,0.08);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    cursor: default;
+  }
+  .goal-item:hover {
+    transform: translateX(8px);
+    box-shadow: -4px 0 0 var(--rose), 0 8px 24px var(--shadow);
+    border-color: rgba(194,24,91,0.2);
+  }
+  .goal-icon {
+    width: 46px; height: 46px; min-width: 46px;
+    background: var(--rose-pale); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+  }
+  .goal-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 5px; }
+  .goal-text p { font-size: 0.83rem; color: var(--mid); line-height: 1.6; }
+
+  .goals-cta-box {
+    background: linear-gradient(135deg, var(--rose) 0%, #e91e8c 100%);
+    border-radius: 28px; padding: 48px 40px; color: #fff;
+    position: sticky; top: 100px;
+    box-shadow: 0 24px 60px rgba(194,24,91,0.35);
+  }
+  .goals-cta-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; line-height: 1.2; margin-bottom: 16px;
+  }
+  .goals-cta-box p { font-size: 0.9rem; opacity: 0.85; line-height: 1.75; margin-bottom: 32px; }
+  .goals-cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fff; color: var(--rose);
+    padding: 14px 30px; border-radius: 40px;
+    font-size: 0.88rem; font-weight: 600; letter-spacing: 0.05em;
+    text-decoration: none; text-transform: uppercase;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .goals-cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #100D0B;
+    color: rgba(255,255,255,0.75);
+    padding: 70px 5% 30px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 60px;
+  }
+  .footer-brand .nav-logo-text { color: var(--rose-light); }
+  .footer-brand .nav-logo-text span { color: rgba(255,255,255,0.4); }
+  .footer-brand p {
+    font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.8;
+    margin-top: 16px; max-width: 280px;
+  }
+
+  .footer-col h5 {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--rose-light); font-weight: 600; margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    text-decoration: none; color: rgba(255,255,255,0.55); font-size: 0.85rem;
+    transition: color 0.25s;
+  }
+  .footer-col ul li a:hover { color: #fff; }
+
+  .footer-socials { display: flex; gap: 12px; margin-top: 24px; }
+  .social-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; text-decoration: none; color: rgba(255,255,255,0.7);
+    transition: background 0.25s, transform 0.25s;
+  }
+  .social-btn:hover { background: var(--rose); transform: translateY(-2px); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+  .footer-bottom .heart { color: var(--rose-light); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatBadge {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+    .hero-visual { margin-top: 48px; }
+    .hero-tagline { margin: 0 auto 36px; }
+    .about-grid, .goals-layout { grid-template-columns: 1fr; gap: 48px; }
+    .mission-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { justify-content: center; }
+    .nav-links { display: none; }
+    .about-quote { display: none; }
+    .goals-cta-box { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">S</div>
+    <div class="nav-logo-text">She Can Foundation <span>Empowering Women Worldwide</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#mission">Our Mission</a></li>
+    <li><a href="#goals">Our Goals</a></li>
+    <li><a href="#contact" class="nav-cta">Donate Now</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Women Shadow Initiative</div>
+    <h1>Rising Women,<br><em>Shaping Futures</em></h1>
+    <p class="hero-tagline">She Can Foundation believes every woman carries within her the power to transform communities, break barriers, and illuminate the world. We walk beside her — every step of the way.</p>
+    <a href="#goals" class="hero-btn">
+      Join Our Movement
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">12K+</span><span class="stat-label">Women Empowered</span></div>
+      <div class="stat-item"><span class="stat-num">48</span><span class="stat-label">Communities Reached</span></div>
+      <div class="stat-item"><span class="stat-num">96%</span><span class="stat-label">Impact Rate</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-img-wrap">
+      <div class="hero-ring"></div>
+      <img
+        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+        alt="Empowered woman leader"
+      />
+      <div class="hero-img-badge">
+        <div class="badge-icon">🌸</div>
+        <div class="badge-text">
+          <strong>Since 2024</strong>
+          <span>Serving Communities</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <span class="section-tag">Who We Are</span>
+      <h2 class="section-heading">About <em>She Can</em><br>Foundation</h2>
+      <div class="divider"></div>
+      <p class="section-sub">She Can Foundation is a non-governmental organisation dedicated to dismantling the invisible walls that hold women back — poverty, inequality, lack of education, and social exclusion. Founded on the belief that the upliftment of women is the upliftment of all humanity, we work at the grassroots level to bring real, lasting change.</p>
+      <p style="font-size:0.95rem;color:var(--mid);line-height:1.8;margin-top:18px;font-weight:300;">We are mentors, advocates, and companions in the journey of thousands of women across underserved communities. Through education, skill-building, healthcare access, and legal aid, we ensure no woman is left behind.</p>
+      <div class="about-features">
+        <div class="feature-card">
+          <div class="icon">📚</div>
+          <h4>Education Access</h4>
+          <p>Scholarships, literacy programmes & digital learning for all women.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">💼</div>
+          <h4>Skill Development</h4>
+          <p>Vocational training and entrepreneurship support to build independence.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">⚖️</div>
+          <h4>Legal Empowerment</h4>
+          <p>Free legal aid, awareness camps and rights education for women.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🏥</div>
+          <h4>Health & Wellness</h4>
+          <p>Maternal care, mental health support and community health drives.</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <img
+        src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=800&q=80"
+        alt="Women community gathering"
+        class="about-img"
+      />
+      <div class="about-quote">
+        <blockquote>"When women rise, the entire nation rises with them."</blockquote>
+        <cite>— She Can Foundation</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MISSION ══ -->
+<section id="mission">
+  <div style="max-width:640px;">
+    <span class="section-tag">Our Ambition</span>
+    <h2 class="section-heading">Our Mission &amp; <em>Vision</em></h2>
+    <div class="divider"></div>
+    <p class="section-sub">We envision a world where every woman — regardless of her background — has the freedom, tools, and dignity to author her own story. Our mission drives every programme we run.</p>
+  </div>
+  <div class="mission-grid">
+    <div class="mission-card">
+      <div class="mission-num">01</div>
+      <h3>Educate &amp; Enlighten</h3>
+      <p>We believe education is the most powerful equaliser. Our mission includes eliminating illiteracy among women in rural and urban underserved areas through accessible and quality learning opportunities.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-num">02</div>
+      <h3>Economically Uplift</h3>
+      <p>Financial independence transforms lives. We connect women with micro-financing, job placement programmes, and entrepreneurship mentoring so they can build sustainable livelihoods.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-num">03</div>
+      <h3>Eradicate Violence</h3>
+      <p>Safety is a fundamental right. We run awareness campaigns, crisis helplines, and support shelters to protect women from gender-based violence and advocate for stronger legal protections.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-num">04</div>
+      <h3>Leadership Pipeline</h3>
+      <p>We prepare the next generation of women leaders through mentorship, leadership academies, and by placing women at decision-making tables in government, business, and civil society.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-num">05</div>
+      <h3>Health &amp; Dignity</h3>
+      <p>Access to healthcare is not a privilege. We organise medical camps, maternal health clinics, and mental wellness sessions so every woman can live in full health and dignity.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-num">06</div>
+      <h3>Community Building</h3>
+      <p>Change is collective. We foster safe community spaces where women can connect, share experiences, support one another, and amplify their collective voice in society.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GOALS ══ -->
+<section id="goals">
+  <div class="goals-layout">
+    <div>
+      <span class="section-tag">Our Goals</span>
+      <h2 class="section-heading">What We're<br><em>Working Towards</em></h2>
+      <div class="divider"></div>
+      <p class="section-sub">Every action we take is guided by clear, measurable goals designed to create systemic change for women across communities.</p>
+      <div class="goals-list">
+        <div class="goal-item">
+          <div class="goal-icon">🎓</div>
+          <div class="goal-text">
+            <h4>Educate 50,000 Women by 2027</h4>
+            <p>Enrol underprivileged women into formal and informal education programmes, closing the gender literacy gap in target districts.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon">🌱</div>
+          <div class="goal-text">
+            <h4>Launch 500 Women-Led Enterprises</h4>
+            <p>Support women entrepreneurs with seed grants, mentoring, and market access to build sustainable businesses.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon">🛡️</div>
+          <div class="goal-text">
+            <h4>Zero Tolerance for Gender Violence</h4>
+            <p>Establish rapid-response units and partner with law enforcement to ensure every survivor has immediate support and justice.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon">🏛️</div>
+          <div class="goal-text">
+            <h4>30% Women in Local Leadership</h4>
+            <p>Advocate and train women to take up roles in local governance, panchayats, and community boards across all operating regions.</p>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon">💊</div>
+          <div class="goal-text">
+            <h4>Universal Health Access</h4>
+            <p>Ensure every woman in our programme areas has access to regular health screenings, maternal care, and mental health resources.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-cta-box">
+      <h3>Be Part of the Change</h3>
+      <p>Your support directly funds education, healthcare, legal aid, and entrepreneurship programmes for women who need it most. Every contribution — big or small — writes a new chapter in a woman's life.</p>
+      <p style="margin-bottom:16px;font-size:0.85rem;opacity:0.75;">🌸 100% of donations go towards our ground programmes. We believe in radical transparency.</p>
+      <a href="#contact" class="goals-cta-btn">
+        ♡ &nbsp;Donate &amp; Empower
+      </a>
+      <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.2);">
+        <p style="font-size:0.8rem;opacity:0.65;margin-bottom:0;">Registered NGO · 80G Tax Exemption · FCRA Certified</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="text-decoration:none;">
+        <div class="nav-logo-icon">S</div>
+        <div class="nav-logo-text">She Can Foundation <span>Empowering Women Worldwide</span></div>
+      </a>
+      <p>We are a non-profit dedicated to empowering women through education, economic independence, health, and dignity. Together, we build a more equal world.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook">f</a>
+        <a class="social-btn" href="#" title="Instagram">📷</a>
+        <a class="social-btn" href="#" title="Twitter">𝕏</a>
+        <a class="social-btn" href="#" title="LinkedIn">in</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#mission">Our Mission</a></li>
+        <li><a href="#goals">Our Goals</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Annual Reports</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Programmes</h5>
+      <ul>
+        <li><a href="#">Education Drive</a></li>
+        <li><a href="#">Skill Training</a></li>
+        <li><a href="#">Legal Aid Cell</a></li>
+        <li><a href="#">Health Camps</a></li>
+        <li><a href="#">Women Shadow</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Get In Touch</h5>
+      <ul>
+        <li><a href="mailto:info@shecanfoundation.org">info@shecanfoundation.org</a></li>
+        <li><a href="tel:+911234567890">+91 12345 67890</a></li>
+        <li><a href="#">Volunteer With Us</a></li>
+        <li><a href="#">Partner With Us</a></li>
+        <li><a href="#">Donate Now</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 She Can Foundation. All rights reserved.</p>
+    <p>Made with <span class="heart">♥</span> for every woman who dares to dream.</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feature-card, .mission-card, .goal-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--rose)' : '';
+    });
+  });
+</script>
+</body>
+</html>
